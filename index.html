@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJs With Php</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <script src="app/lib/angular.min.js"></script>
+    <script src="app/app.js"></script>
+</head>
+
+<body>
+    <div class="container" style="width: 500px;">
+        <h1 class="text-center">Crud</h1>
+        <div ng-app="myApp" ng-controller="UserController">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="first_name" required ng-model="first_name">
+            <br>
+            <label>Last Name</label>
+            <input type="text" name="last_name" class="form-control" required ng-model="last_name">
+            <br>
+            <input type="text" hidden name="id" ng-model="id">
+            <br>
+            <input type="submit" name="btnInsert" class="btn btn-info form-control" ng-click="insertData()" value="{{btnName}}">
+            <br>
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Update
+                    </th>
+                    <th>
+                        Delete
+                    </th>
+                </tr>
+                <tr ng-repeat="name in names">
+                    <td>
+                        {{name.first_name}}
+                    </td>
+                    <td>
+                        {{name.last_name}}
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="updateData(name.user_id,name.first_name,name.last_name)">
+                            Update
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteData(name.user_id)">
+                            Delete
+                        </button>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
